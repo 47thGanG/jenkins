@@ -2,13 +2,14 @@ pipeline {
     agent any
 
     stages {
-        stage('docker-compose build') {
+        stage('docker-compose install') {
             steps {
-                sh 'docker-compose build'
+                sh 'sudo apt install docker-compose'
             }
         }
-        stage('docker-compose up') {
+        stage('docker-compose build and up') {
             steps {
+                sh 'docker-compose build'
                 sh 'docker-compose up -d'
             }
         }
